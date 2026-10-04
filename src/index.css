@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans',Arial,sans-serif;
+  color: #153b2a;
+  background: #f5f5ef;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #143d2b rgba(0, 0, 0, 0.01);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #143d2b;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: #d6b758;
+  color: #153b2a;
+}
+
+:focus-visible {
+  outline: 2px solid #d6b758;
+  outline-offset: 7px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Flexible grid children must be able to shrink to the viewport. */
+#root,
+#page-content {
+  min-width: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+:where(.about-story, .expertise-grid, .insights-grid, .footer-opening, .footer-bottom, .services-page-row, .clients-opening, .clients-reasons li) > * {
+  min-width: 0;
+}
+
+@media (pointer: coarse) {
+  .about-anchor,
+  .expertise-services-label,
+  .footer-opening nav a,
+  .about-page-invitation a,
+  .services-page-delivery a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

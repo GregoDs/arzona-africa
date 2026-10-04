@@ -1,0 +1,320 @@
+.hero {
+  --hero-height: max(720px, 100svh);
+  position: relative;
+  height: var(--hero-height);
+  isolation: isolate;
+  overflow: hidden;
+  color: #fafbf3;
+  background: #143d2b;
+}
+
+/* The photograph and sign share one coordinate system at every screen size. */
+.hero-scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, calc(var(--hero-height) * 1.3278));
+  height: max(100%, 75.3125vw);
+  transform: translate(-50%, calc(-50% + var(--image-offset, 0px)));
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-signboard {
+  position: absolute;
+  top: 21.08%;
+  left: 27.25%;
+  width: 40.75%;
+  height: 33.05%;
+  padding: clamp(24px, 2.8vw, 54px);
+  border: clamp(8px, .9vw, 16px) solid #d9bf72;
+  background: linear-gradient(115deg, #143d2b, #102e21);
+  box-shadow: inset 0 0 0 1px rgba(250, 251, 243, .12), 0 8px 18px rgba(0, 0, 0, .18);
+}
+
+.hero-signboard h1 {
+  position: absolute;
+  top: 28%;
+  left: clamp(24px, 2.8vw, 54px);
+  right: clamp(24px, 2.8vw, 54px);
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(28px, 2.8vw, 52px);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: 1.15;
+  animation: signboard-enter 1s .15s both;
+}
+
+.hero-welcome {
+  display: block;
+  margin-bottom: 4px;
+  font-size: .32em;
+  line-height: 1.2;
+  letter-spacing: .02em;
+  color: #d9bf72;
+}
+
+.signboard-logo {
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
+  display: block;
+  width: 18%;
+  height: auto;
+  object-fit: contain;
+}
+
+.signboard-arrow {
+  position: absolute;
+  top: 7%;
+  right: 6%;
+  width: 24px;
+  height: 24px;
+  color: #d9bf72;
+}
+
+.signboard-ticker {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  perspective: 500px;
+  vertical-align: bottom;
+}
+
+.signboard-ticker.is-amber {
+  color: #d9bf72;
+  --ticker-delay: .18s;
+}
+
+.ticker-measure {
+  visibility: hidden;
+}
+
+.ticker-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  backface-visibility: hidden;
+  transform-origin: 50% 50%;
+  animation-duration: 4.2s;
+  animation-timing-function: cubic-bezier(.76, 0, .24, 1);
+  animation-iteration-count: infinite;
+  animation-delay: var(--ticker-delay, 0s);
+}
+
+.ticker-face-current {
+  animation-name: signboard-tick-out;
+}
+
+.ticker-face-next {
+  opacity: 0;
+  animation-name: signboard-tick-in;
+}
+
+@keyframes signboard-tick-out {
+  0%, 76%, 100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+
+  96%, 99.9% {
+    opacity: 0;
+    transform: translateY(-58%) rotateX(88deg);
+  }
+}
+
+@keyframes signboard-tick-in {
+  0%, 76% {
+    opacity: 0;
+    transform: translateY(58%) rotateX(-88deg);
+  }
+
+  77% {
+    opacity: 1;
+    transform: translateY(58%) rotateX(-88deg);
+  }
+
+  96%, 99.9% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(58%) rotateX(-88deg);
+  }
+}
+
+.signboard-location {
+  position: absolute;
+  bottom: 7%;
+  left: 6%;
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  color: #ffffff;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(10, 25, 17, .12), transparent 25%, transparent 56%, rgba(8, 23, 15, .75));
+}
+
+.hero-message {
+  position: absolute;
+  bottom: 5.5%;
+  left: 4.2vw;
+  right: 4.2vw;
+  animation: signboard-enter 1s .45s both;
+}
+
+.hero-message p {
+  max-width: 36em;
+  margin: 0;
+  font-size: clamp(20px, 2vw, 36px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.45;
+  color: #fafbf3;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .3);
+}
+
+@keyframes signboard-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    --hero-height: max(760px, 100svh);
+  }
+
+  .hero-scene {
+    left: 55%;
+  }
+
+  .hero-signboard {
+    padding: 24px 32px;
+  }
+
+  .hero-signboard h1 {
+    left: 32px;
+    right: 32px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .signboard-logo {
+    right: 50%;
+    bottom: 7%;
+    width: 100px;
+    transform: translateX(50%);
+  }
+
+  .hero-message {
+    left: 6vw;
+    right: 6vw;
+    bottom: 6%;
+  }
+
+  .hero-message p {
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .hero-message-break {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene {
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-signboard h1,
+  .hero-message {
+    animation: none;
+  }
+
+  .ticker-face {
+    animation: none;
+    transform: none;
+  }
+
+  .ticker-face-next {
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .hero {
+    --hero-height: max(640px, 100svh);
+  }
+
+  .hero-scene {
+    left: 50%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-signboard {
+    top: 20.5%;
+    left: 0;
+    width: 100%;
+    height: clamp(280px, 44svh, 380px);
+    padding: 20px;
+    border-width: 8px;
+  }
+
+  .hero-signboard h1 {
+    top: 28%;
+    left: 18px;
+    right: 18px;
+    font-size: clamp(25px, 6.4vw, 38px);
+    text-align: left;
+  }
+
+  .signboard-logo {
+    right: 5%;
+    bottom: 8%;
+    width: 70px;
+    transform: none;
+  }
+
+  .signboard-location {
+    font-size: 10px;
+  }
+
+  .hero-message {
+    bottom: 32px;
+  }
+
+  .hero-message p {
+    font-size: clamp(17px, 4.5vw, 22px);
+    line-height: 1.4;
+  }
+}
+
+@media (max-height: 500px) and (min-width: 601px) {
+  .hero {
+    --hero-height: 640px;
+  }
+}

@@ -1,0 +1,248 @@
+.expertise {
+  padding: 80px 4.2vw 96px;
+  background: linear-gradient(120deg, #173e2b, #254c32);
+  color: #fafbf3;
+  scroll-margin-top: 80px;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.expertise-heading h2 {
+  margin: 0;
+  padding-bottom: .03em;
+  font-size: clamp(40px, 4.45vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.expertise-services-label {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  padding-bottom: 6px;
+  border-bottom: 1px solid currentColor;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.expertise-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 1;
+  min-height: 355px;
+  padding: 26px;
+  border: 1px solid #d9bf7266;
+  isolation: isolate;
+}
+
+.expertise-box:nth-of-type(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.expertise-box:nth-of-type(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.expertise-box:nth-of-type(3) {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.expertise-box:nth-of-type(4) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.expertise-box:nth-of-type(5) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.expertise-box:nth-of-type(6) {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+.expertise-box-panel {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #d9bf72;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform .7s cubic-bezier(.76, 0, .24, 1);
+}
+
+.expertise-box-number {
+  font-size: 13px;
+  transition: color .5s ease;
+}
+
+.expertise-box-toggle {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  padding: 10px;
+  background: #d9bf72;
+  color: #173e2b;
+  cursor: pointer;
+}
+
+.expertise-box-toggle:focus-visible {
+  outline: 2px solid #fafbf3;
+  outline-offset: 5px;
+}
+
+.expertise-box-toggle svg {
+  width: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: transform .7s cubic-bezier(.76, 0, .24, 1);
+}
+
+.expertise-box-topics {
+  margin: 48px 0 26px;
+  padding: 0;
+  list-style: none;
+  color: #173e2b;
+}
+
+.expertise-box-topics li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.expertise-box h3 {
+  position: relative;
+  margin: auto 0 0;
+  font-size: clamp(24px, 2.2vw, 36px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  transition: color .5s ease;
+}
+
+.expertise-box.is-open .expertise-box-panel {
+  transform: scale(1);
+}
+
+.expertise-box.is-open h3,
+.expertise-box.is-open .expertise-box-number {
+  color: #173e2b;
+}
+
+.expertise-box.is-open .expertise-box-toggle svg {
+  transform: rotate(180deg);
+}
+
+.expertise-box.is-open .expertise-box-topics li {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(.25s + var(--topic-index) * .06s);
+}
+
+@media (max-width: 1100px) {
+  .expertise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .expertise-heading {
+    grid-column: 1;
+    margin-bottom: 20px;
+  }
+
+  .expertise-services-label {
+    grid-column: 2;
+    font-size: 22px;
+  }
+
+  .expertise-box:nth-of-type(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .expertise {
+    padding: 55px 6vw 65px;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .expertise-heading {
+    grid-column: 1;
+    margin-bottom: 0;
+  }
+
+  .expertise-services-label {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .expertise-box {
+    min-height: 370px;
+    padding: 24px;
+  }
+
+  .expertise-box h3 {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expertise-box-panel,
+  .expertise-box-number,
+  .expertise-box-toggle svg,
+  .expertise-box-topics li,
+  .expertise-box h3 {
+    transition: none;
+  }
+}
+
+.expertise-heading-doodle {
+  margin-top: 36px;
+  stroke: #d9bf72;
+}
+
+@media (max-width: 600px) {
+  .expertise-heading h2 {
+    font-size: clamp(34px, 9vw, 48px);
+  }
+
+  .expertise-box {
+    min-height: 330px;
+    aspect-ratio: auto;
+    padding: 22px;
+  }
+
+  .expertise-box h3 {
+    font-size: clamp(25px, 6.8vw, 32px);
+  }
+}

@@ -1,0 +1,52 @@
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  color: #fafbf3;
+}
+
+.page-intro-panels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.page-intro-panels span {
+  flex: 1;
+  margin-right: -1px;
+  background: #173e2b;
+}
+
+.page-intro[data-page='about'] .page-intro-panels span:nth-child(2),
+.page-intro[data-page='services'] .page-intro-panels span:nth-child(2) {
+  display: none;
+}
+
+.page-intro[data-page='contact'] .page-intro-panels span {
+  border-top: 4px solid #d9bf72;
+}
+
+.page-intro-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 6vw;
+  text-align: center;
+}
+
+.page-intro-content img {
+  width: clamp(145px, 18vw, 235px);
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-intro {
+    display: none;
+  }
+}

@@ -1,0 +1,140 @@
+.team-feature {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: end;
+  min-height: 80svh;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  isolation: isolate;
+  background: #173e2b;
+  color: #fafbf3;
+}
+
+.team-feature-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(.93);
+  transform: translateY(var(--team-image-offset, 0px)) scale(1.18);
+  will-change: transform;
+}
+
+.team-feature::before {
+  content: '';
+  position: absolute;
+  inset: 40% 0 0;
+  z-index: -1;
+  background: linear-gradient(transparent, rgba(8, 25, 17, .85));
+}
+
+.team-feature-square {
+  position: absolute;
+  top: 72px;
+  left: 4.2vw;
+  width: 44px;
+  height: 44px;
+  background: #d9bf72;
+}
+
+.team-feature-content {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  padding: 72px 4.2vw;
+}
+
+.team-feature h2 {
+  max-width: 20ch;
+  margin: 0;
+  font-size: clamp(36px, 4.45vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.team-feature h2 span {
+  color: #d9bf72;
+}
+
+.team-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid currentColor;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.team-feature-link svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #d9bf72;
+  stroke-width: 1.3;
+  transition: transform .3s ease;
+}
+
+.team-feature-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.team-feature-link:focus-visible {
+  outline: 2px solid #d9bf72;
+  outline-offset: 6px;
+}
+
+@media (max-width: 600px) {
+  .team-feature {
+    min-height: 80svh;
+    aspect-ratio: auto;
+  }
+
+  .team-feature-photo {
+    object-position: 50% center;
+  }
+
+  .team-feature-square {
+    top: 45px;
+    left: 6vw;
+    width: 32px;
+    height: 32px;
+  }
+
+  .team-feature-content {
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+    padding: 45px 6vw;
+  }
+
+  .team-feature-link {
+    align-self: end;
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-feature-photo {
+    transform: none;
+    will-change: auto;
+  }
+
+  .team-feature-link svg {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-feature h2 {
+    font-size: clamp(30px, 8vw, 44px);
+  }
+}
